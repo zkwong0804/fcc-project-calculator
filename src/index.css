@@ -1,3 +1,9 @@
+:root {
+  --btn-size-landscape: 10vh;
+  --btn-size-portrait: 15vw;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +11,109 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  width: 99%;
+  margin: 0 auto 0 auto;
+  color: white;
+}
+
+.buttons,
+.display-container {
+  text-align: center;
+}
+
+.buttons div,
+.display-container div {
+  display: inline-grid;
+  margin: 2rem auto 0 auto;
+  grid-template-columns: repeat(4, var(--btn-size-landscape));
+  gap: 2vh;
+  justify-items: center;
+
+}
+
+.button {
+  width: var(--btn-size-landscape);
+  height: var(--btn-size-landscape);
+  padding: 0;
+  border-style: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 6vh;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button-number {
+  background-color: rgb(49, 49, 49);
+}
+
+.button-operator {
+  background-color: rgb(246, 154, 6);
+}
+
+.button-clear {
+  background-color: rgb(159, 159, 159);
+  color: black;
+}
+
+.button-span-2 {
+  grid-column-start: span 2;
+  width: calc(var(--btn-size-landscape) * 2.25);
+  border-radius: 10rem;
+}
+
+.button-span-3 {
+  grid-column-start: span 3;
+  width: calc(var(--btn-size-landscape) * 3.25);
+  border-radius: 10rem;
+}
+
+#display {
+  display: block;
+  font-size: 15vh;
+  margin: 0;
+  width: 100%;
+  text-align: right;
+  grid-column-start: span 4;
+}
+
+@media screen and (orientation: portrait) {
+  #root {
+    margin-top: 15vh;
+  }
+
+  .buttons div,
+  .display-container div {
+    grid-template-columns: repeat(4, var(--btn-size-portrait));
+    gap: 2vw;
+  }
+
+  .button {
+    width: var(--btn-size-portrait);
+    height: var(--btn-size-portrait);
+    font-size: 6vw;
+  }
+
+  .button-span-2 {
+    width: calc(var(--btn-size-portrait) * 2.25);
+  }
+
+  .button-span-3 {
+    width: calc(var(--btn-size-portrait) * 3.25);
+  }
+
+  #display {
+    font-size: 15vw;
+  }
 }
